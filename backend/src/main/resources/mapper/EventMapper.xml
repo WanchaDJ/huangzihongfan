@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yupi.yuoj.mapper.EventMapper">
+
+    <resultMap id="BaseResultMap" type="com.yupi.yuoj.model.entity.Event">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="city" column="city" jdbcType="VARCHAR"/>
+        <result property="venue" column="venue" jdbcType="VARCHAR"/>
+        <result property="eventDate" column="eventDate" jdbcType="TIMESTAMP"/>
+        <result property="saleStartTime" column="saleStartTime" jdbcType="TIMESTAMP"/>
+        <result property="priceTiers" column="priceTiers" jdbcType="VARCHAR"/>
+        <result property="minPrice" column="minPrice" jdbcType="DECIMAL"/>
+        <result property="maxPrice" column="maxPrice" jdbcType="DECIMAL"/>
+        <result property="stock" column="stock" jdbcType="INTEGER"/>
+        <result property="soldCount" column="soldCount" jdbcType="INTEGER"/>
+        <result property="coverImage" column="coverImage" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,city,venue,
+        eventDate,saleStartTime,priceTiers,minPrice,
+        maxPrice,stock,soldCount,coverImage,
+        description,status,type,createTime,
+        updateTime,isDelete
+    </sql>
+
+</mapper>

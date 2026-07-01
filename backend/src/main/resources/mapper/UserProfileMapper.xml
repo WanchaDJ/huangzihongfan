@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yupi.yuoj.mapper.UserProfileMapper">
+
+    <resultMap id="BaseResultMap" type="com.yupi.yuoj.model.entity.UserProfile">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="userId" jdbcType="BIGINT"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="birthday" column="birthday" jdbcType="DATE"/>
+        <result property="province" column="province" jdbcType="VARCHAR"/>
+        <result property="city" column="city" jdbcType="VARCHAR"/>
+        <result property="district" column="district" jdbcType="VARCHAR"/>
+        <result property="detailAddress" column="detailAddress" jdbcType="VARCHAR"/>
+        <result property="bio" column="bio" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="TINYINT"/>
+        <result property="memberLevel" column="memberLevel" jdbcType="VARCHAR"/>
+        <result property="memberExpireTime" column="memberExpireTime" jdbcType="TIMESTAMP"/>
+        <result property="growthValue" column="growthValue" jdbcType="INTEGER"/>
+        <result property="points" column="points" jdbcType="INTEGER"/>
+        <result property="totalSpend" column="totalSpend" jdbcType="DECIMAL"/>
+        <result property="inviteCode" column="inviteCode" jdbcType="VARCHAR"/>
+        <result property="inviteCount" column="inviteCount" jdbcType="INTEGER"/>
+        <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,userId,phone,birthday,
+        province,city,district,detailAddress,
+        bio,gender,memberLevel,memberExpireTime,
+        growthValue,points,totalSpend,inviteCode,
+        inviteCount,createTime,updateTime,isDelete
+    </sql>
+
+</mapper>

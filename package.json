@@ -1,0 +1,32 @@
+{
+  "name": "hzhf",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vee-validate/rules": "^4.15.1",
+    "@vueuse/core": "^14.1.0",
+    "axios": "^1.13.2",
+    "dompurify": "^3.3.1",
+    "echarts": "^6.0.0",
+    "marked": "^17.0.1",
+    "pinia": "^3.0.3",
+    "vee-validate": "^4.15.1",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "eslint": "^9.39.1",
+    "vite": "^7.1.7",
+    "vite-plugin-vue-devtools": "^8.0.2"
+  }
+}

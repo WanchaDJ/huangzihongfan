@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yupi.yuoj.mapper.TrackMapper">
+
+    <resultMap id="BaseResultMap" type="com.yupi.yuoj.model.entity.Track">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="albumId" column="albumId" jdbcType="BIGINT"/>
+        <result property="albumTitle" column="albumTitle" jdbcType="VARCHAR"/>
+        <result property="duration" column="duration" jdbcType="INTEGER"/>
+        <result property="durationText" column="durationText" jdbcType="VARCHAR"/>
+        <result property="trackNumber" column="trackNumber" jdbcType="INTEGER"/>
+        <result property="audioUrl" column="audioUrl" jdbcType="VARCHAR"/>
+        <result property="coverImage" column="coverImage" jdbcType="VARCHAR"/>
+        <result property="lyrics" column="lyrics" jdbcType="VARCHAR"/>
+        <result property="playCount" column="playCount" jdbcType="INTEGER"/>
+        <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,albumId,albumTitle,
+        duration,durationText,trackNumber,audioUrl,
+        coverImage,lyrics,playCount,createTime,
+        updateTime,isDelete
+    </sql>
+
+</mapper>

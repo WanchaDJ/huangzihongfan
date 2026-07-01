@@ -1,0 +1,89 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: hzhf-mysql
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+      - --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: zhf
+      TZ: Asia/Shanghai
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/sql/basebackend.sql:/docker-entrypoint-initdb.d/01-basebackend.sql:ro
+      - ./backend/sql/supplement.sql:/docker-entrypoint-initdb.d/02-supplement.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD} -D zhf -e \"SELECT 1 FROM post LIMIT 1\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - hzhf
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    container_name: hzhf-elasticsearch
+    restart: unless-stopped
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      TZ: Asia/Shanghai
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    networks:
+      - hzhf
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: hzhf-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_started
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SERVER_PORT: 8121
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/zhf?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      SPRING_ELASTICSEARCH_URIS: http://elasticsearch:9200
+      PUBLIC_API_BASE_URL: ${PUBLIC_API_BASE_URL:-}
+      TZ: Asia/Shanghai
+    volumes:
+      - backend_uploads:/app/backend/uploads
+    expose:
+      - "8121"
+    networks:
+      - hzhf
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: /api
+    container_name: hzhf-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${WEB_PORT:-80}:80"
+    networks:
+      - hzhf
+
+networks:
+  hzhf:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  elasticsearch_data:
+  backend_uploads:

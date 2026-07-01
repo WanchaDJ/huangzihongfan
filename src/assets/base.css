@@ -1,0 +1,121 @@
+/* 黄子弘凡官方网站 — 白金主题 + 紫红点缀 */
+:root {
+  /* 金色主色 */
+  --color-gold: #C9A84C;
+  --color-gold-dark: #A88830;
+  --color-gold-light: #E0CD8A;
+  --color-gold-hover: #D4B960;
+  --color-gold-pale: rgba(201, 168, 76, 0.1);
+  --color-gold-glow: rgba(201, 168, 76, 0.2);
+  --color-gold-text: #8B6914;
+
+  /* 点缀色 */
+  --color-purple: #7C3AED;
+  --color-purple-dark: #6D28D9;
+  --color-purple-pale: rgba(124, 58, 237, 0.08);
+  --color-red: #DC2626;
+  --color-red-pale: rgba(220, 38, 38, 0.08);
+
+  /* 基底色 — 白色系 */
+  --color-bg: #FAFAF8;
+  --color-bg-warm: #F7F5F0;
+  --color-bg-card: #FFFFFF;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-mute: #F2F0EB;
+
+  /* 边框 */
+  --color-border: #E5E2DA;
+  --color-border-light: #F0EDE6;
+
+  /* 文字 */
+  --color-text: #3D3A35;
+  --color-text-secondary: #8A8780;
+  --color-text-muted: #B5B2AB;
+  --color-heading: #8B6914;
+
+  /* 阴影 */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 28px rgba(0,0,0,0.1);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.12);
+  --shadow-gold: 0 4px 20px rgba(201,168,76,0.25);
+  --shadow-purple: 0 4px 20px rgba(124,58,237,0.15);
+
+  /* 圆角 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* 过渡 */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s ease;
+  --transition-slow: 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* 语义变量 */
+:root {
+  --color-background: var(--color-bg);
+  --color-background-soft: var(--color-bg-warm);
+  --color-background-mute: var(--color-bg-mute);
+  --color-background-card: var(--color-bg-card);
+  --color-background-elevated: var(--color-bg-elevated);
+
+  --color-primary: var(--color-gold);
+  --color-primary-dark: var(--color-gold-dark);
+  --color-primary-light: var(--color-gold-light);
+  --color-primary-hover: var(--color-gold-hover);
+  --color-primary-pale: var(--color-gold-pale);
+  --color-primary-glow: var(--color-gold-glow);
+  --color-primary-text: var(--color-gold-text);
+
+  --color-accent: var(--color-purple);
+  --color-accent-dark: var(--color-purple-dark);
+  --color-accent-pale: var(--color-purple-pale);
+
+  --color-danger: var(--color-red);
+  --color-danger-pale: var(--color-red-pale);
+  --color-success: #16A34A;
+  --color-info: #2563EB;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; font-weight: normal; }
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: 1.7;
+  font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D0CCC4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+h1,h2,h3,h4,h5,h6 { color: var(--color-heading); font-weight: 600; line-height: 1.35; margin-bottom: 0.35em; }
+h1 { font-size: 2.4rem; font-weight: 700; }
+h2 { font-size: 1.9rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.15rem; }
+
+button { font-family: inherit; font-size: inherit; cursor: pointer; transition: all var(--transition-fast); border: none; outline: none; }
+
+input, textarea, select {
+  font-family: inherit; font-size: inherit; border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md); padding: 0.6rem 1rem;
+  background: var(--color-bg-card); color: var(--color-text);
+  transition: all var(--transition-fast); outline: none;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-gold-pale); }
+
+a { text-decoration: none; color: var(--color-primary-dark); transition: all var(--transition-fast); }
+.no-select { user-select: none; -webkit-user-select: none; }
